@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'screen/home_screen.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -26,12 +28,14 @@ class MyAppStatefulWidget extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyAppStatefulWidget> {
-  static const List<Widget> _widgetBody = <Widget>[
-    Text("home"),
-    Text("favorite")
-  ];
+  static List<Widget> _widgetBody = <Widget>[HomeScreen(), Text("favorite")];
 
   int _selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +51,6 @@ class _MyAppState extends State<MyAppStatefulWidget> {
                 icon: Icon(Icons.favorite), label: "favorite")
           ],
           currentIndex: _selectedIndex,
-          // selectedItemColor: Colors.amberAccent,
           onTap: (index) {
             setState(() {
               _selectedIndex = index;
